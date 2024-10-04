@@ -1,0 +1,77 @@
+{
+  "name": "bun-spreadsheets",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Easily generate spreadsheets, like CSVs and Excel files.",
+  "author": "Chris Breuer <chris@stacksjs.org>",
+  "license": "MIT",
+  "homepage": "https://github.com/stacksjs/ts-starter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stacksjs/ts-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stacksjs/ts-starter/issues"
+  },
+  "keywords": [
+    "spreadsheet",
+    "csv",
+    "excel",
+    "export",
+    "functional",
+    "functions",
+    "bun"
+  ],
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "bun": "./src/*",
+      "import": "./dist/*"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "bun --bun build.ts",
+    "lint": "biome check .",
+    "lint:fix": "biome check --fix .",
+    "fresh": "bunx rimraf node_modules/ bun.lock && bun i",
+    "commit": "git cz",
+    "changelog": "bunx changelogen --output CHANGELOG.md",
+    "prepublishOnly": "bun --bun run build",
+    "release": "bun run changelog && bunx bumpp package.json --all",
+    "test": "bun test",
+    "typecheck": "bun --bun tsc --noEmit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.2",
+    "@commitlint/cli": "^19.5.0",
+    "@stacksjs/biome-config": "^0.1.5",
+    "@types/bun": "^1.1.10",
+    "bumpp": "^9.5.2",
+    "bun-plugin-dts-auto": "^0.15.0",
+    "changelogen": "^0.5.7",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.4",
+    "lint-staged": "^15.2.10",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.6.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "bun lint-staged",
+    "commit-msg": "bunx --no -- commitlint --edit $1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": "biome check --fix ."
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}

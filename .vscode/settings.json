@@ -1,0 +1,40 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "prettier.enable": false,
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  // JSON
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true
+  },
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/cdk.out": true,
+    "**/dist": true,
+    "CHANGELOG.md": true
+  },
+
+  "cSpell.ignorePaths": ["node_modules"],
+  "cSpell.dictionaries": ["custom-dictionary"],
+  "cSpell.diagnosticLevel": "Hint",
+  "cSpell.customDictionaries": {
+    "bun-plugin-env": {
+      "name": "custom-dictionary",
+      "path": "./.vscode/dictionary.txt",
+      "scope": "user",
+      "addWords": true
+    },
+    "custom": true // enable the `custom` dictionary
+  }
+}
