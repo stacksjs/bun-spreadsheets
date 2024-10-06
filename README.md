@@ -222,15 +222,15 @@ Many thanks to the following core technologies & people who have contributed to 
 
 ## 📄 License
 
-The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/stacks/tree/main/LICENSE.md) for more information.
+The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/bun-spreadsheets/tree/main/LICENSE.md) for more information.
 
 Made with 💙
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/bun-ts-starter?style=flat-square
-[npm-version-href]: https://npmjs.com/package/bun-ts-starter
-[npm-downloads-src]: https://img.shields.io/npm/dm/bun-ts-starter?style=flat-square
-[npm-downloads-href]: https://npmjs.com/package/bun-ts-starter
+[npm-version-src]: https://img.shields.io/npm/v/bun-spreadsheets?style=flat-square
+[npm-version-href]: https://npmjs.com/package/bun-spreadsheets
+[npm-downloads-src]: https://img.shields.io/npm/dm/bun-spreadsheets?style=flat-square
+[npm-downloads-href]: https://npmjs.com/package/bun-spreadsheets
 [github-actions-src]: https://img.shields.io/github/actions/workflow/status/stacksjs/ts-starter/ci.yml?style=flat-square&branch=main
 [github-actions-href]: https://github.com/stacksjs/ts-starter/actions?query=workflow%3Aci
 
