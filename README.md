@@ -1,4 +1,4 @@
-<p align="center"><img src=".github/art/cover.jpg" alt="Social Card of this Bun Spreadsheets repo"></p>
+<p align="center"><img src="https://github.com/stacksjs/bun-spreadsheets/blob/main/.github/art/cover.jpg" alt="Social Card of this Bun Spreadsheets repo"></p>
 
 [![npm version][npm-version-src]][npm-version-href]
 [![GitHub Actions][github-actions-src]][github-actions-href]
@@ -229,8 +229,6 @@ Made with 💙
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/bun-spreadsheets?style=flat-square
 [npm-version-href]: https://npmjs.com/package/bun-spreadsheets
-[npm-downloads-src]: https://img.shields.io/npm/dm/bun-spreadsheets?style=flat-square
-[npm-downloads-href]: https://npmjs.com/package/bun-spreadsheets
 [github-actions-src]: https://img.shields.io/github/actions/workflow/status/stacksjs/ts-starter/ci.yml?style=flat-square&branch=main
 [github-actions-href]: https://github.com/stacksjs/ts-starter/actions?query=workflow%3Aci
 
