@@ -122,12 +122,14 @@ export function generateCSVContent(content: Content): string {
 }
 
 export function generateExcelContent(content: Content): Uint8Array {
-  const workbook = Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  const workbook = new Uint8Array(
+    Buffer.from(`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
     <sheets>
       <sheet name="Sheet1" sheetId="1" r:id="rId1"/>
     </sheets>
-  </workbook>`)
+  </workbook>`),
+  )
 
   const worksheet = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
@@ -163,57 +165,77 @@ export function generateExcelContent(content: Content): Uint8Array {
     <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
   </Relationships>`
 
-  const files: Array<{ name: string; content: string | Uint8Array }> = [
-    { name: '[Content_Types].xml', content: contentTypes },
-    { name: '_rels/.rels', content: rels },
+  const files: Array<{ name: string; content: Uint8Array }> = [
+    { name: '[Content_Types].xml', content: new Uint8Array(Buffer.from(contentTypes)) },
+    { name: '_rels/.rels', content: new Uint8Array(Buffer.from(rels)) },
     { name: 'xl/workbook.xml', content: workbook },
-    { name: 'xl/worksheets/sheet1.xml', content: worksheet },
+    { name: 'xl/worksheets/sheet1.xml', content: new Uint8Array(Buffer.from(worksheet)) },
   ]
 
   const zipData = files.map((file) => {
-    const compressedContent = Bun.gzipSync(Buffer.from(file.content))
-    const header = Buffer.alloc(30 + file.name.length)
-    header.write('PK\x03\x04', 0)
-    header.writeUInt32LE(0x0008, 4)
-    header.writeUInt32LE(compressedContent.length, 18)
-    header.writeUInt32LE(Buffer.from(file.content).length, 22)
-    header.writeUInt16LE(file.name.length, 26)
-    header.write(file.name, 30)
+    const compressedContent = new Uint8Array(Bun.gzipSync(file.content))
+    const header = new Uint8Array(30 + file.name.length)
+    const headerView = new DataView(header.buffer)
 
-    return Buffer.concat([header, compressedContent])
+    headerView.setUint32(0, 0x04034b50, true) // 'PK\x03\x04'
+    headerView.setUint32(4, 0x0008, true)
+    headerView.setUint32(18, compressedContent.length, true)
+    headerView.setUint32(22, file.content.length, true)
+    headerView.setUint16(26, file.name.length, true)
+
+    const encoder = new TextEncoder()
+    header.set(encoder.encode(file.name), 30)
+
+    return { header, compressedContent }
   })
 
   const centralDirectory = files.map((file, index) => {
-    const header = Buffer.alloc(46 + file.name.length)
-    header.write('PK\x01\x02', 0)
-    header.writeUInt16LE(0x0014, 4)
-    header.writeUInt16LE(0x0008, 6)
-    header.writeUInt32LE(0x0008, 8)
-    // biome-ignore lint/style/noNonNullAssertion: We know that zipData[index] is not null because we are iterating over files
-    header.writeUInt32LE(zipData[index]!.length - 30 - file.name.length, 20)
-    header.writeUInt32LE(
-      zipData.slice(0, index).reduce((acc, curr) => acc + curr.length, 0),
+    const header = new Uint8Array(46 + file.name.length)
+    const headerView = new DataView(header.buffer)
+
+    headerView.setUint32(0, 0x02014b50, true) // 'PK\x01\x02'
+    headerView.setUint16(4, 0x0014, true)
+    headerView.setUint16(6, 0x0008, true)
+    headerView.setUint32(8, 0x0008, true)
+    headerView.setUint32(20, zipData[index].compressedContent.length - 30 - file.name.length, true)
+    headerView.setUint32(
       42,
+      zipData.slice(0, index).reduce((acc, curr) => acc + curr.header.length + curr.compressedContent.length, 0),
+      true,
     )
-    header.writeUInt16LE(file.name.length, 28)
-    header.write(file.name, 46)
+    headerView.setUint16(28, file.name.length, true)
+
+    const encoder = new TextEncoder()
+    header.set(encoder.encode(file.name), 46)
+
     return header
   })
 
-  const endOfCentralDirectory = Buffer.alloc(22)
-  endOfCentralDirectory.write('PK\x05\x06', 0)
-  endOfCentralDirectory.writeUInt16LE(files.length, 8)
-  endOfCentralDirectory.writeUInt16LE(files.length, 10)
-  endOfCentralDirectory.writeUInt32LE(
-    centralDirectory.reduce((acc, curr) => acc + curr.length, 0),
-    12,
-  )
-  endOfCentralDirectory.writeUInt32LE(
-    zipData.reduce((acc, curr) => acc + curr.length, 0),
-    16,
-  )
+  const endOfCentralDirectory = new Uint8Array(22)
 
-  return Uint8Array.from(Buffer.concat([...zipData, ...centralDirectory, endOfCentralDirectory]))
+  const totalSize =
+    zipData.reduce((acc, { header, compressedContent }) => acc + header.length + compressedContent.length, 0) +
+    centralDirectory.reduce((acc, header) => acc + header.length, 0) +
+    endOfCentralDirectory.length
+
+  // Create a single Uint8Array with the total size
+  const result = new Uint8Array(totalSize)
+
+  // Copy data into the result array
+  let offset = 0
+  for (const { header, compressedContent } of zipData) {
+    result.set(header, offset)
+    offset += header.length
+    result.set(compressedContent, offset)
+    offset += compressedContent.length
+  }
+  for (const header of centralDirectory) {
+    result.set(header, offset)
+    offset += header.length
+  }
+  result.set(endOfCentralDirectory, offset)
+
+  return result
 }
 
 export * from './types'
