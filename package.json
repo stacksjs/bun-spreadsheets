@@ -49,15 +49,15 @@
     "typecheck": "bun --bun tsc --noEmit"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
+    "@biomejs/biome": "^1.9.3",
     "@commitlint/cli": "^19.5.0",
     "@stacksjs/biome-config": "^0.1.5",
     "@types/bun": "^1.1.10",
-    "bumpp": "^9.5.2",
-    "bun-plugin-dts-auto": "^0.15.0",
+    "bumpp": "^9.6.1",
+    "bun-plugin-dts-auto": "^0.17.0",
     "changelogen": "^0.5.7",
-    "commitizen": "^4.3.0",
-    "cz-git": "^1.9.4",
+    "commitizen": "^4.3.1",
+    "cz-git": "^1.10.0",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2"
