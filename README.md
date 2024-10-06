@@ -36,9 +36,9 @@ import { spreadsheet, createSpreadsheet } from 'bun-spreadsheets'
 const data = {
   headings: ['Name', 'Age', 'City'],
   data: [
-    ['John Doe', '30', 'New York'],
-    ['Jane Smith', '25', 'London'],
-    ['Bob Johnson', '35', 'Paris']
+    ['John Doe', 30, 'Los Angeles'],
+    ['Jana Schmidt', 25, 'Berlin'],
+    ['Bob Johnson', 35, 'London']
   ]
 }
 
