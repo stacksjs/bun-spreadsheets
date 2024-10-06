@@ -1,7 +1,7 @@
 {
   "name": "bun-spreadsheets",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Easily generate spreadsheets, like CSVs and Excel files.",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",

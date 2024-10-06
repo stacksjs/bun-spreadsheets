@@ -1,4 +1,21 @@
 
+## ...main
+
+
+### 🏡 Chore
+
+- Initial commit ([6a51579](https://github.com/stacksjs/ts-starter/commit/6a51579))
+- Adjust readme links ([363287c](https://github.com/stacksjs/ts-starter/commit/363287c))
+- Several minor adjustments ([c615067](https://github.com/stacksjs/ts-starter/commit/c615067))
+- Update `bun-plugin-dts-auto` ([517f5f7](https://github.com/stacksjs/ts-starter/commit/517f5f7))
+- Use bun publish ([d1d254b](https://github.com/stacksjs/ts-starter/commit/d1d254b))
+- Minify build & include sourcemap ([8080a31](https://github.com/stacksjs/ts-starter/commit/8080a31))
+- Adjust image url for proper remote display ([a71562d](https://github.com/stacksjs/ts-starter/commit/a71562d))
+
+### ❤️ Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 ## v0.3.1...main
 
 [compare changes](https://github.com/stacksjs/ts-starter/compare/v0.3.1...main)
