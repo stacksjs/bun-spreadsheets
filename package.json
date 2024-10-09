@@ -52,15 +52,15 @@
     "@biomejs/biome": "^1.9.3",
     "@commitlint/cli": "^19.5.0",
     "@stacksjs/biome-config": "^0.1.5",
-    "@types/bun": "^1.1.10",
-    "bumpp": "^9.6.1",
-    "bun-plugin-dts-auto": "^0.18.8",
+    "@types/bun": "^1.1.11",
+    "bumpp": "^9.7.1",
+    "bun-plugin-dts-auto": "^0.20.6",
     "changelogen": "^0.5.7",
     "commitizen": "^4.3.1",
-    "cz-git": "^1.10.0",
+    "cz-git": "^1.10.1",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "simple-git-hooks": {
     "pre-commit": "bun lint-staged",
