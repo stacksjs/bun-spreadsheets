@@ -32,7 +32,7 @@ jobs:
       - name: Publish To npm
         run: bun publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Create GitHub Release
         run: bunx changelogithub
