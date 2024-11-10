@@ -1,40 +1,110 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
   "prettier.enable": false,
-  "editor.defaultFormatter": "biomejs.biome",
-  "editor.formatOnSave": true,
+  "biome.enabled": false,
+  "editor.formatOnSave": false,
+
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
-  },
-  // JSON
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
 
-  // Markdown
+  "eslint.rules.customizations": [
+    { "rule": "style/*", "severity": "off", "fixable": true },
+    { "rule": "format/*", "severity": "off", "fixable": true },
+    { "rule": "*-indent", "severity": "off", "fixable": true },
+    { "rule": "*-spacing", "severity": "off", "fixable": true },
+    { "rule": "*-spaces", "severity": "off", "fixable": true },
+    { "rule": "*-order", "severity": "off", "fixable": true },
+    { "rule": "*-dangle", "severity": "off", "fixable": true },
+    { "rule": "*-newline", "severity": "off", "fixable": true },
+    { "rule": "*quotes", "severity": "off", "fixable": true },
+    { "rule": "*semi", "severity": "off", "fixable": true }
+  ],
+
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml",
+    "xml",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
+  ],
+
+  "typescript.tsdk": "${workspaceFolder}/node_modules/typescript/lib",
+
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
     "editor.formatOnSave": true
   },
 
+  "[dockerfile]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  "typescript.preferGoToSourceDefinition": true,
+  "files.associations": {
+    "buddy": "typescript",
+    "*.stx": "vue"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "vsicons.associations.files": [
+    {
+      "icon": "${workspaceFolder}/public/favicon.svg",
+      "extensions": ["stx"],
+      "format": "svg"
+    }
+  ],
+  "git.enableSmartCommit": true,
+  "npm.enableRunFromFolder": true,
+  "npm.packageManager": "bun",
+  "editor.gotoLocation.multipleDefinitions": "goto",
   "search.exclude": {
     "**/node_modules": true,
     "**/cdk.out": true,
     "**/dist": true,
+    "**/storage/public": true,
     "CHANGELOG.md": true
   },
-
-  "cSpell.ignorePaths": ["node_modules"],
-  "cSpell.dictionaries": ["custom-dictionary"],
+  "explorer.confirmDragAndDrop": false,
+  "todo-tree.highlights.enabled": true,
+  "cSpell.ignorePaths": [
+    "node_modules"
+  ],
+  "cSpell.dictionaries": [
+    "custom-dictionary"
+  ],
   "cSpell.diagnosticLevel": "Hint",
   "cSpell.customDictionaries": {
-    "bun-plugin-env": {
+    "stacks": {
       "name": "custom-dictionary",
       "path": "./.vscode/dictionary.txt",
       "scope": "user",
       "addWords": true
     },
-    "custom": true // enable the `custom` dictionary
-  }
+    "custom": true
+  },
+  "terminal.integrated.scrollback": 10000,
+  "grammarly.files.include": [
+    "**/README.md",
+    "**/readme.md",
+    "**/*.txt"
+  ],
+  "grammarly.files.exclude": [
+    "**/dictionary.txt"
+  ]
 }

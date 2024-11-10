@@ -38,8 +38,8 @@
   "files": ["dist", "src"],
   "scripts": {
     "build": "bun --bun build.ts",
-    "lint": "biome check .",
-    "lint:fix": "biome check --fix .",
+    "lint": "bunx --bun eslint .",
+    "lint:fix": "bunx --bun eslint . --fix",
     "fresh": "bunx rimraf node_modules/ bun.lock && bun i",
     "commit": "git cz",
     "changelog": "bunx changelogen --output CHANGELOG.md",
@@ -49,9 +49,8 @@
     "typecheck": "bun --bun tsc --noEmit"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
     "@commitlint/cli": "^19.5.0",
-    "@stacksjs/biome-config": "^0.1.5",
+    "@stacksjs/eslint-config": "^3.8.1-beta.2",
     "@types/bun": "^1.1.10",
     "bumpp": "^9.6.1",
     "bun-plugin-dts-auto": "^0.18.8",
@@ -67,11 +66,6 @@
     "commit-msg": "bunx --no -- commitlint --edit $1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,vue}": "biome check --fix ."
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-git"
-    }
+    "*.{js,ts}": "bun lint:fix"
   }
 }
