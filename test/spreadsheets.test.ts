@@ -1,7 +1,7 @@
+import type { Content } from '../src/types'
 import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
 import { existsSync, unlinkSync } from 'node:fs'
 import { createSpreadsheet, spreadsheet } from '../src/index'
-import type { Content } from '../src/types'
 
 describe('bun-spreadsheets', () => {
   let testData: Content
@@ -118,7 +118,8 @@ describe('bun-spreadsheets', () => {
         await spreadsheet(testData).csv().store('output.csv')
         // If we reach here, no error was thrown
         expect(true).toBe(true)
-      } catch (error) {
+      }
+      catch (error) {
         console.error('Error in method chaining:', error)
         // Fail the test if an error is caught
         expect(error).toBeUndefined()

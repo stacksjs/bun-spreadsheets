@@ -31,7 +31,7 @@ export type SpreadsheetOptions = Partial<{
 
 export type FileExtension = '.csv' | '.xlsx'
 
-export type Spreadsheet = {
+export interface Spreadsheet {
   (
     data: Content,
   ): {

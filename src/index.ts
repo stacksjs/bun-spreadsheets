@@ -6,6 +6,7 @@ import type {
   SpreadsheetOptions,
   SpreadsheetType,
 } from './types'
+import { Buffer } from 'node:buffer'
 
 export const spreadsheet: Spreadsheet = Object.assign(
   (data: Content) => ({
@@ -59,7 +60,8 @@ export const spreadsheet: Spreadsheet = Object.assign(
     store: async ({ content }: SpreadsheetContent, path: string): Promise<void> => {
       try {
         await Bun.write(path, content)
-      } catch (error) {
+      }
+      catch (error) {
         throw new Error(`Failed to store spreadsheet: ${(error as Error).message}`)
       }
     },
@@ -107,7 +109,7 @@ export function generateCSVContent(content: Content): string {
   const rows = [content.headings, ...content.data]
 
   return rows
-    .map((row) =>
+    .map(row =>
       row
         .map((cell) => {
           const cellString = String(cell)
@@ -165,7 +167,7 @@ export function generateExcelContent(content: Content): Uint8Array {
     <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
   </Relationships>`
 
-  const files: Array<{ name: string; content: Uint8Array }> = [
+  const files: Array<{ name: string, content: Uint8Array }> = [
     { name: '[Content_Types].xml', content: new Uint8Array(Buffer.from(contentTypes)) },
     { name: '_rels/.rels', content: new Uint8Array(Buffer.from(rels)) },
     { name: 'xl/workbook.xml', content: workbook },
@@ -177,7 +179,7 @@ export function generateExcelContent(content: Content): Uint8Array {
     const header = new Uint8Array(30 + file.name.length)
     const headerView = new DataView(header.buffer)
 
-    headerView.setUint32(0, 0x04034b50, true) // 'PK\x03\x04'
+    headerView.setUint32(0, 0x04034B50, true) // 'PK\x03\x04'
     headerView.setUint32(4, 0x0008, true)
     headerView.setUint32(18, compressedContent.length, true)
     headerView.setUint32(22, file.content.length, true)
@@ -193,7 +195,7 @@ export function generateExcelContent(content: Content): Uint8Array {
     const header = new Uint8Array(46 + file.name.length)
     const headerView = new DataView(header.buffer)
 
-    headerView.setUint32(0, 0x02014b50, true) // 'PK\x01\x02'
+    headerView.setUint32(0, 0x02014B50, true) // 'PK\x01\x02'
     headerView.setUint16(4, 0x0014, true)
     headerView.setUint16(6, 0x0008, true)
     headerView.setUint32(8, 0x0008, true)
@@ -213,10 +215,10 @@ export function generateExcelContent(content: Content): Uint8Array {
 
   const endOfCentralDirectory = new Uint8Array(22)
 
-  const totalSize =
-    zipData.reduce((acc, { header, compressedContent }) => acc + header.length + compressedContent.length, 0) +
-    centralDirectory.reduce((acc, header) => acc + header.length, 0) +
-    endOfCentralDirectory.length
+  const totalSize
+    = zipData.reduce((acc, { header, compressedContent }) => acc + header.length + compressedContent.length, 0)
+    + centralDirectory.reduce((acc, header) => acc + header.length, 0)
+    + endOfCentralDirectory.length
 
   // Create a single Uint8Array with the total size
   const result = new Uint8Array(totalSize)

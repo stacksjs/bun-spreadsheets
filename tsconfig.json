@@ -11,14 +11,14 @@
     "strict": true,
     "strictNullChecks": true,
     "noFallthroughCasesInSwitch": true,
+    "declaration": true,
     "noEmit": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "isolatedDeclarations": true,
+    "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "skipDefaultLibCheck": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "declaration": true,
-    "isolatedDeclarations": true
+    "skipLibCheck": true
   }
 }

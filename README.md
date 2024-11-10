@@ -30,7 +30,7 @@ bun install bun-spreadsheets
 Now, you can use it in your project:
 
 ```ts
-import { spreadsheet, createSpreadsheet } from 'bun-spreadsheets'
+import { createSpreadsheet, spreadsheet } from 'bun-spreadsheets'
 
 // Create a spreadsheet
 const data = {
