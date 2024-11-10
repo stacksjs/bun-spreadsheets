@@ -1,4 +1,18 @@
 
+## v0.1.0...main
+
+[compare changes](https://github.com/stacksjs/bun-spreadsheets/compare/v0.1.0...main)
+
+### 🏡 Chore
+
+- Use better readme examples ([bf435e8](https://github.com/stacksjs/bun-spreadsheets/commit/bf435e8))
+- Use eslint ([47e6d6c](https://github.com/stacksjs/bun-spreadsheets/commit/47e6d6c))
+- Housecleaning ([27dcbba](https://github.com/stacksjs/bun-spreadsheets/commit/27dcbba))
+
+### ❤️ Contributors
+
+- Chris ([@chrisbbreuer](http://github.com/chrisbbreuer))
+
 ## ...main
 
 
