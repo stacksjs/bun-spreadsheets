@@ -1,4 +1,17 @@
 
+## v0.1.1...main
+
+[compare changes](https://github.com/stacksjs/bun-spreadsheets/compare/v0.1.1...main)
+
+### 🏡 Chore
+
+- Resolve lint issues ([b834312](https://github.com/stacksjs/bun-spreadsheets/commit/b834312))
+- Resolve release flow ([7394a7e](https://github.com/stacksjs/bun-spreadsheets/commit/7394a7e))
+
+### ❤️ Contributors
+
+- Chris ([@chrisbbreuer](http://github.com/chrisbbreuer))
+
 ## v0.1.0...main
 
 [compare changes](https://github.com/stacksjs/bun-spreadsheets/compare/v0.1.0...main)
