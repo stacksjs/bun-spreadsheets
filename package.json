@@ -5,13 +5,13 @@
   "description": "Easily generate spreadsheets, like CSVs and Excel files.",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",
-  "homepage": "https://github.com/stacksjs/ts-starter#readme",
+  "homepage": "https://github.com/stacksjs/bun-spreadsheets#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stacksjs/ts-starter.git"
+    "url": "git+https://github.com/stacksjs/bun-spreadsheets.git"
   },
   "bugs": {
-    "url": "https://github.com/stacksjs/ts-starter/issues"
+    "url": "https://github.com/stacksjs/bun-spreadsheets/issues"
   },
   "keywords": [
     "spreadsheet",
@@ -41,7 +41,6 @@
     "lint": "bunx --bun eslint .",
     "lint:fix": "bunx --bun eslint . --fix",
     "fresh": "bunx rimraf node_modules/ bun.lock && bun i",
-    "commit": "git cz",
     "changelog": "bunx changelogen --output CHANGELOG.md",
     "prepublishOnly": "bun --bun run build",
     "release": "bun run changelog && bunx bumpp package.json --all",
@@ -49,21 +48,17 @@
     "typecheck": "bun --bun tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
     "@stacksjs/eslint-config": "^3.8.1-beta.2",
     "@types/bun": "^1.1.10",
     "bumpp": "^9.6.1",
-    "bun-plugin-dts-auto": "^0.18.8",
+    "bun-plugin-dtsx": "^0.21.8",
     "changelogen": "^0.5.7",
-    "commitizen": "^4.3.1",
-    "cz-git": "^1.10.0",
     "lint-staged": "^15.2.10",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.6.2"
   },
   "simple-git-hooks": {
-    "pre-commit": "bun lint-staged",
-    "commit-msg": "bunx --no -- commitlint --edit $1"
+    "pre-commit": "bun lint-staged"
   },
   "lint-staged": {
     "*.{js,ts}": "bun lint:fix"
