@@ -1,4 +1,30 @@
 
+## v0.1.2...main
+
+[compare changes](https://github.com/stacksjs/ts-spreadsheets/compare/v0.1.2...main)
+
+### 🚀 Enhancements
+
+- Create node compatibility ([eca2390](https://github.com/stacksjs/ts-spreadsheets/commit/eca2390))
+- Add cli & binaries ([ddb5577](https://github.com/stacksjs/ts-spreadsheets/commit/ddb5577))
+
+### 📖 Documentation
+
+- Added documentation ([1bf9f7d](https://github.com/stacksjs/ts-spreadsheets/commit/1bf9f7d))
+- Hard code contributors link ([dfeb93c](https://github.com/stacksjs/ts-spreadsheets/commit/dfeb93c))
+
+### 🏡 Chore
+
+- Use text lock file ([b3e8ecd](https://github.com/stacksjs/ts-spreadsheets/commit/b3e8ecd))
+- Several adjustments ([0a4f2c2](https://github.com/stacksjs/ts-spreadsheets/commit/0a4f2c2))
+- Re-set unconfig version ([96146a1](https://github.com/stacksjs/ts-spreadsheets/commit/96146a1))
+- Adjust readme ([e7b1bc8](https://github.com/stacksjs/ts-spreadsheets/commit/e7b1bc8))
+
+### ❤️ Contributors
+
+- Chris ([@chrisbbreuer](http://github.com/chrisbbreuer))
+- Cab-mikee ([@cab-mikee](http://github.com/cab-mikee))
+
 ## v0.1.1...main
 
 [compare changes](https://github.com/stacksjs/bun-spreadsheets/compare/v0.1.1...main)
