@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'bun:test'
 import { existsSync, unlinkSync } from 'node:fs'
 import { createSpreadsheet, spreadsheet } from '../src/index'
 
-describe('bun-spreadsheets', () => {
+describe('ts-spreadsheets', () => {
   let testData: Content
 
   beforeEach(() => {

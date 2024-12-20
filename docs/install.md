@@ -3,7 +3,7 @@
 ## Bun
 
 ```bash
-bun install bun-spreadsheets
+bun install ts-spreadsheets
 ```
 
 _We are looking to publish this package npm under the name `ts-spreadsheets`. We are also hoping npm will release the name for us._

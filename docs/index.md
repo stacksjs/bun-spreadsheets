@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "ts-spreadsheets"
-  text: "A typescript spreadsheet Library"
-  tagline: "Easily generate spreadsheets, like CSVs and Excel files."
+  text: "A TypeScript Spreadsheet Library"
+  tagline: "Easily manage spreadsheets. CSVs & Excel."
   image: /images/logo-white.png
   actions:
     - theme: brand

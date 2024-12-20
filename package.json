@@ -5,13 +5,13 @@
   "description": "Easily generate spreadsheets, like CSVs and Excel files.",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",
-  "homepage": "https://github.com/stacksjs/bun-spreadsheets#readme",
+  "homepage": "https://github.com/stacksjs/ts-spreadsheets#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stacksjs/bun-spreadsheets.git"
+    "url": "git+https://github.com/stacksjs/ts-spreadsheets.git"
   },
   "bugs": {
-    "url": "https://github.com/stacksjs/bun-spreadsheets/issues"
+    "url": "https://github.com/stacksjs/ts-spreadsheets/issues"
   },
   "keywords": [
     "spreadsheet",

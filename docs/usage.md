@@ -3,7 +3,7 @@
 Now, you can use it in your project:
 
 ```ts
-import { createSpreadsheet, spreadsheet } from 'bun-spreadsheets'
+import { createSpreadsheet, spreadsheet } from 'ts-spreadsheets'
 
 // Create a spreadsheet
 const data = {
@@ -160,4 +160,4 @@ await spreadsheet(data).store('output.xlsx')
 await spreadsheet(data).generateExcel().store('output.xlsx')
 ```
 
-To view the full documentation, please visit [https://stacksjs.org/docs/bun-spreadsheets](https://stacksjs.org/docs/bun-spreadsheets).
+To view the full documentation, please visit [https://stacksjs.org/docs/ts-spreadsheets](https://stacksjs.org/docs/ts-spreadsheets).

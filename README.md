@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/stacksjs/bun-spreadsheets/blob/main/.github/art/cover.jpg" alt="Social Card of this Bun Spreadsheets repo"></p>
+<p align="center"><img src="https://github.com/stacksjs/ts-spreadsheets/blob/main/.github/art/cover.jpg" alt="Social Card of this Bun Spreadsheets repo"></p>
 
 [![npm version][npm-version-src]][npm-version-href]
 [![GitHub Actions][github-actions-src]][github-actions-href]
@@ -24,13 +24,13 @@ Easily generate spreadsheets, like CSVs and Excel files.
 ## 🤖 Usage
 
 ```bash
-bun install bun-spreadsheets
+bun install ts-spreadsheets
 ```
 
 Now, you can use it in your project:
 
 ```ts
-import { createSpreadsheet, spreadsheet } from 'bun-spreadsheets'
+import { createSpreadsheet, spreadsheet } from 'ts-spreadsheets'
 
 // Create a spreadsheet
 const data = {
@@ -187,7 +187,7 @@ await spreadsheet(data).store('output.xlsx')
 await spreadsheet(data).generateExcel().store('output.xlsx')
 ```
 
-To view the full documentation, please visit [https://stacksjs.org/docs/bun-spreadsheets](https://stacksjs.org/docs/bun-spreadsheets).
+To view the full documentation, please visit [https://stacksjs.org/docs/ts-spreadsheets](https://stacksjs.org/docs/ts-spreadsheets).
 
 ## 🧪 Testing
 
@@ -222,13 +222,13 @@ Many thanks to the following core technologies & people who have contributed to 
 
 ## 📄 License
 
-The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/bun-spreadsheets/tree/main/LICENSE.md) for more information.
+The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/ts-spreadsheets/tree/main/LICENSE.md) for more information.
 
 Made with 💙
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/bun-spreadsheets?style=flat-square
-[npm-version-href]: https://npmjs.com/package/bun-spreadsheets
+[npm-version-src]: https://img.shields.io/npm/v/ts-spreadsheets?style=flat-square
+[npm-version-href]: https://npmjs.com/package/ts-spreadsheets
 [github-actions-src]: https://img.shields.io/github/actions/workflow/status/stacksjs/ts-starter/ci.yml?style=flat-square&branch=main
 [github-actions-href]: https://github.com/stacksjs/ts-starter/actions?query=workflow%3Aci
 

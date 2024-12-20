@@ -42,7 +42,7 @@ Many thanks to the following core technologies & people who have contributed to 
 
 ## 📄 License
 
-The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/bun-spreadsheets/tree/main/LICENSE.md) for more information.
+The MIT License (MIT). Please see [LICENSE](https://github.com/stacksjs/ts-spreadsheets/tree/main/LICENSE.md) for more information.
 
 Made with 💙
 

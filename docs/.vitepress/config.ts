@@ -62,7 +62,7 @@ export default withPwa(
   defineConfig({
     lang: 'en-US',
     title: 'ts-spreadsheets',
-    description: 'Easily generate spreadsheets, like CSVs and Excel files.',
+    description: 'Easily manage spreadsheets. CSV & Excel.',
     metaChunk: true,
     cleanUrls: true,
 
