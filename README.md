@@ -6,28 +6,33 @@
 <!-- [![npm downloads][npm-downloads-src]][npm-downloads-href] -->
 <!-- [![Codecov][codecov-src]][codecov-href] -->
 
-# Bun Spreadsheets
+# Spreadsheets
 
 Easily generate spreadsheets, like CSVs and Excel files.
 
 ## ☘️ Features
 
-- Generate CSV files
-- Generate Excel files
+- Generate CSV & Excel files
 - Store spreadsheets to disk
 - Download spreadsheets as a Response object
 - Simple API for creating and manipulating spreadsheets
+- Library & CLI support
 - Fully typed
-- Optimized for Bun
 - Lightweight & dependency-free
 
 ## 🤖 Usage
+
+There are two ways to interact with `ts-spreadsheets`: via the CLI or as a library.
+
+### Library
+
+As a library, you will want to make sure to install it in your project:
 
 ```bash
 bun install ts-spreadsheets
 ```
 
-Now, you can use it in your project:
+_Now, you can use the library in your project:_
 
 ```ts
 import { createSpreadsheet, spreadsheet } from 'ts-spreadsheets'
@@ -73,8 +78,6 @@ console.log('CSV Content:', rawCsvContent)
 console.log('Excel Content:', rawExcelContent)
 ```
 
-## 📚 API Documentation
-
 ### Main Functions
 
 #### spreadsheet(data: Content)
@@ -91,7 +94,7 @@ Returns an object with the following methods:
 - `generateCSV()`: Generates a CSV SpreadsheetWrapper
 - `generateExcel()`: Generates an Excel SpreadsheetWrapper
 
-Example:
+_Example:_
 
 ```typescript
 const csvWrapper = await spreadsheet(data).csv() // equivalent to spreadsheet(data).generateCSV()
@@ -106,7 +109,7 @@ Creates a SpreadsheetWrapper with the given data and options.
 
 Returns a SpreadsheetWrapper.
 
-Example:
+_Example:_
 
 ```typescript
 const spreadsheet = createSpreadsheet(data, { type: 'csv' })
@@ -162,7 +165,7 @@ Generates a CSV SpreadsheetWrapper.
 
 Returns a SpreadsheetWrapper for CSV, which can be used to chain other methods like `store()` or `download()`.
 
-Example:
+_Example:_
 
 ```typescript
 await spreadsheet(data).generateCSV().store('output.csv')
@@ -179,7 +182,7 @@ Generates an Excel SpreadsheetWrapper.
 
 Returns a SpreadsheetWrapper for Excel, which can be used to chain other methods like `store()` or `download()`.
 
-Example:
+_Example:_
 
 ```ts
 await spreadsheet(data).store('output.xlsx')
@@ -187,7 +190,59 @@ await spreadsheet(data).store('output.xlsx')
 await spreadsheet(data).generateExcel().store('output.xlsx')
 ```
 
-To view the full documentation, please visit [https://stacksjs.org/docs/ts-spreadsheets](https://stacksjs.org/docs/ts-spreadsheets).
+To view the full documentation, please visit [https://ts-spreadsheets.netlify.app](https://ts-spreadsheets.netlify.app).
+
+### CLI
+
+You can also use the CLI to generate spreadsheets from JSON input:
+
+```bash
+# Create a spreadsheet from JSON input
+spreadsheets create data.json -o output.csv
+spreadsheets create data.json --type excel -o output.xlsx
+
+# Convert between formats
+spreadsheets convert input.csv output.xlsx
+spreadsheets convert input.xlsx output.csv
+
+# Validate JSON input format
+spreadsheets validate input.json
+```
+
+The input json should follow this format:
+
+```json
+{
+  "headings": ["Name", "Age", "City"],
+  "data": [
+    ["John Doe", 30, "Los Angeles"],
+    ["Jana Schmidt", 25, "Berlin"],
+    ["Bob Johnson", 35, "London"]
+  ]
+}
+```
+
+#### CLI Commands
+
+- `create`: Generate a spreadsheet from JSON input
+  - Options:
+    - `-t, --type <type>`: Output type ('csv' or 'excel'), defaults to 'csv'
+    - `-o, --output <path>`: Output file path
+- `convert`: Convert between spreadsheet formats
+  - Automatically detects format from file extensions
+  - Supports conversion between CSV and Excel formats
+- `validate`: Check if JSON input meets the required format
+  - Validates structure and data types
+  - Provides helpful error messages for invalid input
+
+All commands support the `--help` flag for more information:
+
+```bash
+spreadsheets --help
+spreadsheets create --help
+spreadsheets convert --help
+spreadsheets validate --help
+```
 
 ## 🧪 Testing
 

@@ -1,18 +1,17 @@
 <p align="center"><img src="https://github.com/stacksjs/ts-spreadsheets/blob/main/.github/art/cover.jpg" alt="Social Card of this typescript spreadsheets repo"></p>
 
-# Bun Spreadsheets
+# Spreadsheets
 
 Easily generate spreadsheets, like CSVs and Excel files.
 
 ## ☘️ Features
 
-- Generate CSV files
-- Generate Excel files
+- Generate CSV & Excel files
 - Store spreadsheets to disk
 - Download spreadsheets as a Response object
 - Simple API for creating and manipulating spreadsheets
+- Library & CLI Support
 - Fully typed
-- Optimized for Bun
 - Lightweight & dependency-free
 
 ## 📈 Changelog
