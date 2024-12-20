@@ -218,7 +218,7 @@ For casual chit-chat with others using this package:
 Many thanks to the following core technologies & people who have contributed to this package:
 
 - [Chris Breuer](https://github.com/chrisbbreuer)
-- [All Contributors](../../contributors)
+- [All Contributors](https://github.com/stacksjs/ts-spreadsheets/contributors)
 
 ## 📄 License
 
