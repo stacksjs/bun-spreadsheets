@@ -33,6 +33,7 @@ Spatie
 stacksjs
 twoslash
 typecheck
+unconfig
 unocss
 unplugin
 unref
