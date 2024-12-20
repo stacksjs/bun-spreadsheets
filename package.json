@@ -1,5 +1,5 @@
 {
-  "name": "bun-spreadsheets",
+  "name": "ts-spreadsheets",
   "type": "module",
   "version": "0.1.2",
   "description": "Easily generate spreadsheets, like CSVs and Excel files.",
@@ -20,7 +20,8 @@
     "export",
     "functional",
     "functions",
-    "bun"
+    "bun",
+    "node"
   ],
   "exports": {
     ".": {

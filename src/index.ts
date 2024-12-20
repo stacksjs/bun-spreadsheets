@@ -7,6 +7,8 @@ import type {
   SpreadsheetType,
 } from './types'
 import { Buffer } from 'node:buffer'
+import { writeFile } from 'node:fs/promises'
+import { gzipSync } from 'node:zlib'
 
 export const spreadsheet: Spreadsheet = Object.assign(
   (data: Content) => ({
@@ -59,7 +61,7 @@ export const spreadsheet: Spreadsheet = Object.assign(
 
     store: async ({ content }: SpreadsheetContent, path: string): Promise<void> => {
       try {
-        await Bun.write(path, content)
+        await writeFile(path, content)
       }
       catch (error) {
         throw new Error(`Failed to store spreadsheet: ${(error as Error).message}`)
@@ -175,7 +177,7 @@ export function generateExcelContent(content: Content): Uint8Array {
   ]
 
   const zipData = files.map((file) => {
-    const compressedContent = new Uint8Array(Bun.gzipSync(file.content))
+    const compressedContent = new Uint8Array(gzipSync(file.content))
     const header = new Uint8Array(30 + file.name.length)
     const headerView = new DataView(header.buffer)
 
