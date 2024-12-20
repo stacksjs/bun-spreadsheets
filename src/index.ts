@@ -7,7 +7,7 @@ import type {
   SpreadsheetType,
 } from './types'
 import { Buffer } from 'node:buffer'
-import { writeFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 import { gzipSync } from 'node:zlib'
 
 export const spreadsheet: Spreadsheet = Object.assign(
@@ -240,6 +240,39 @@ export function generateExcelContent(content: Content): Uint8Array {
   result.set(endOfCentralDirectory, offset)
 
   return result
+}
+
+export async function csvToContent(csvPath: string): Promise<Content> {
+  const csvContent = await readFile(csvPath, 'utf-8')
+
+  // Split into lines and parse CSV
+  const lines = csvContent.split('\n').map(line =>
+    line.split(',').map((cell) => {
+      const trimmed = cell.trim()
+      // Remove quotes if present
+      if (trimmed.startsWith('"') && trimmed.endsWith('"')) {
+        // Handle escaped quotes
+        return trimmed.slice(1, -1).replace(/""/g, '"')
+      }
+      return trimmed
+    }),
+  )
+
+  // First line is headers
+  const [headings, ...data] = lines
+
+  // Convert numeric strings to numbers
+  const typedData = data.map(row =>
+    row.map((cell) => {
+      const num = Number(cell)
+      return !Number.isNaN(num) && cell.trim() !== '' ? num : cell
+    }),
+  )
+
+  return {
+    headings,
+    data: typedData,
+  }
 }
 
 export * from './types'

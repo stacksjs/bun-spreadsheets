@@ -38,3 +38,15 @@ jobs:
         run: bunx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Attach Binaries
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            bin/spreadsheets-linux-x64
+            bin/spreadsheets-linux-arm64
+            bin/spreadsheets-windows-x64.exe
+            bin/spreadsheets-darwin-x64
+            bin/spreadsheets-darwin-arm64
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
