@@ -1,13 +1,25 @@
 # Install
 
-## Bun
+Installing `ts-spreadsheets` is easy. Simply pull it in via your package manager of choice.
 
-```bash
-bun install ts-spreadsheets
+::: code-group
+
+```sh [npm]
+npm install ts-spreadsheets
+# npm i ts-spreadsheets
 ```
 
-_We are looking to publish this package npm under the name `ts-spreadsheets`. We are also hoping npm will release the name for us._
+```sh [bun]
+bun install ts-spreadsheets
+# bun add ts-spreadsheets
+```
 
-## Binaries
+```sh [pnpm]
+pnpm add ts-spreadsheets
+```
 
-For now, you can download the `ts-spreadsheets` binaries from the [releases page](https://github.com/stacksjs/ts-spreadsheets/releases/tag/v0.1.2). Choose the binary that matches your platform and architecture:
+```sh [yarn]
+yarn add ts-spreadsheets
+```
+
+:::
