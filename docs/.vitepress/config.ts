@@ -80,7 +80,7 @@ export default withPwa(
       ['meta', { name: 'author', content: 'Stacks.js, Inc.' }],
       ['meta', {
         name: 'tags',
-        content: 'ts-spreadsheets, ts, typescript, stacksjs, csv, export, import, lightweight',
+        content: 'ts-spreadsheets, ts, typescript, stacksjs, csv, export, import, lightweight, open-source, lightweight, excel, spreadsheet',
       }],
       ['meta', { property: 'og:type', content: 'website' }],
       ['meta', { property: 'og:locale', content: 'en' }],
